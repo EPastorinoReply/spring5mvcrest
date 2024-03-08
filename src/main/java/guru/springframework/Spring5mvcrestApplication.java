@@ -15,7 +15,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 		@Tag(name = "CustomerController", description = "Controller for managing the operation on different customers"),
 		@Tag(name = "VendorController", description = "Controller for managing the operation on different vendors")})
 public class Spring5mvcrestApplication {
-
+	private String bella = "Bella!!";
 	public static void main(String[] args) {
 		SpringApplication.run(Spring5mvcrestApplication.class, args);
 	}
