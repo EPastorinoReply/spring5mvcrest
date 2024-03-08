@@ -12,12 +12,13 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 public class VendorServiceTest {
-
+    Long ID = 2L;
     VendorRepository vendorRepository = Mockito.mock(VendorRepository.class);
     VendorService vendorService = new VendorServiceImpl(vendorRepository, VendorMapper.INSTANCE);
 
     @Test
     void getVendorById() {
+        vendorRepository.findById(ID);
     }
 
     @Test
