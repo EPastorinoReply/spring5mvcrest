@@ -33,7 +33,6 @@ public class CustomerServiceTest {
     public static final Long ID = 2L;
     public static final String NAME = "Jimmy";
 
-
     CustomerRepository customerRepository = Mockito.mock(CustomerRepository.class);
     CustomerService customerService = new CustomerServiceImpl(CustomerMapper.INSTANCE, customerRepository);
 
