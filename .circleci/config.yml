@@ -38,7 +38,9 @@ jobs:
 
     steps:
       - checkout
-
+      - run:
+          name: Log in to Docker Hub
+          command: echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
       - restore_cache:
           key: maven-v1-{{ checksum "pom.xml" }}
 
