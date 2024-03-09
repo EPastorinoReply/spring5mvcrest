@@ -5,7 +5,7 @@ jobs:
     docker:
       - image: circleci/openjdk:11-jdk
 
-    working_directory: C:\Users\e.pastorino\spring5mvcrest
+    working_directory: C:\Users\e.pastorino\spring5mvcrest\SpringTutorial
 
     steps:
       - checkout
@@ -34,7 +34,7 @@ jobs:
     docker:
       - image: circleci/openjdk:11-jdk
 
-    working_directory: C:\Users\e.pastorino\spring5mvcrest
+    working_directory: C:\Users\e.pastorino\spring5mvcrest\SpringTutorial
 
     steps:
       - checkout
