@@ -5,27 +5,43 @@ version: 2.1
 jobs:
   test:
     docker:
-      - image: cimg/base:stable
+      - image: circleci/openjdk:21-jdk
     steps:
       - checkout
       # Replace this with a real test runner invocation
+      - restore_cache:
+          key: maven-v1-{{ checksum "pom.xml" }}
+
       - run:
-          name: Run tests
-          command: echo 'replace me with real tests!' && false
+          name: Run tests with Maven
+          command: mvn test
   build:
     docker:
-      - image: cimg/base:stable
+      - image: circleci/openjdk:21-jdk
     steps:
       - checkout
+      - run:
+          name: Set up JDK 21
+          command: |
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21/bin/java 1
+            sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk-21/bin/javac 1
+            java -version
+            javac -version
       # Replace this with steps to build a package, or executable
       - run:
-          name: Build an artifact
-          command: touch example.txt
+          name: Build and test with Maven
+          command: mvn clean install
+      - restore_cache:
+          key: maven-v1-{{ checksum "pom.xml" }}
       - store_artifacts:
           path: example.txt
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: maven-v1-{{ checksum "pom.xml" }}
   deploy:
     docker:
-      - image: cimg/base:stable
+      - image: circleci/openjdk:21-jdk
     steps:
       # Replace this with steps to deploy to users
       - run:
@@ -34,10 +50,10 @@ jobs:
 workflows:
   example:
     jobs:
-      - test
-      - build:
+      - build
+      - test:
           requires:
-            - test
-      - deploy:
-          requires:
-            - test
+            - build
+
+
+            
