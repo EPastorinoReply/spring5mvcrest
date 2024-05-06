@@ -12,6 +12,14 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
+    defer-datasource-initialization: true
+#if you need to use mongo db as database for your application this is the setting
+#  data:
+#    mongodb:
+#      port: 27017
+#      host: localhost
+#      username: user
+#      password: password
 
 #      javax:
 #        persistence:
