@@ -48,5 +48,3 @@ jobs:
       - name: Run API tests
         run: |
           postman collection run "32943177-242ca1db-51fa-4d64-8d17-02344272d1e4"
-
-
