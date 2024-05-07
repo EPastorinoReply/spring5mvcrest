@@ -9,11 +9,8 @@ import org.springframework.context.annotation.ComponentScan;
 
 import static org.junit.jupiter.api.Assertions.*;
 //@DataJpaTest
-@SpringBootTest(classes = Spring5mvcrestApplication.class)
-@ComponentScan(basePackages = "guru.springframework")
 //@ExtendWith(SpringExtension.class)
 class CategoryRepositoryTestIT {
-    @Autowired
     CategoryRepository categoryRepository;
 
     @Test
