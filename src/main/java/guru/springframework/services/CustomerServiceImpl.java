@@ -49,14 +49,13 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDto createCustomer(CustomerDto customerDto) {
-        Customer customer = customerMapper.customerDtoToCustomer(customerDto);
-        try{
-            customerRepository.save(customer);
-        }catch (Exception e){
-            throw new RuntimeException(e);
-        }
-
-        return customerDto;
+//        Customer customer = customerMapper.customerDtoToCustomer(customerDto);
+//        try{
+//            customerRepository.save(customer);
+//        }catch (Exception e){
+//            throw new RuntimeException(e);
+//        }
+        return customerMapper.customerToCustomerDTO(customerRepository.save(customerMapper.customerDtoToCustomer(customerDto)));
     }
 
     @Override

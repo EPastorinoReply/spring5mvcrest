@@ -1,12 +1,11 @@
 package guru.springframework.api.v1.model;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Data
 @Getter@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class CustomerDto {
     private Long id;
     private String firstname;
