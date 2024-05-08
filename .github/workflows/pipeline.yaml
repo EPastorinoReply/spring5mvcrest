@@ -26,15 +26,16 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-m2
-      - name: Run the application
-        run: mvn spring-boot:run &
-        timeout-minutes: 5
 
       - name: Build with Maven
         run: mvn clean install
 
       - name: Test with Maven
         run: mvn test
+
+      - name: Run the application
+        run: mvn spring-boot:run &
+        timeout-minutes: 5
 
       - name: Install Postman CLI
         run: |
