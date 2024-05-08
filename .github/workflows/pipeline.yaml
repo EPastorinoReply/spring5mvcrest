@@ -38,7 +38,8 @@ jobs:
 
       - name: Install Postman CLI
         run: |
-          powershell.exe -NoProfile -InputFormat None -ExecutionPolicy AllSigned -Command "[System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://dl-cli.pstmn.io/install/win64.ps1'))"
+          curl -L https://dl-cli.pstmn.io/install/linux64 | sudo tar -xz -C /usr/local/bin
+          sudo chmod +x /usr/local/bin/postman
       - name: Login to Postman CLI
         run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
       - name: Run API tests
